@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SecondActivity">
+
+    <ImageView
+        android:id="@+id/displayview"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="32dp"
+        android:src="@drawable/landscape"
+        android:scaleType="matrix"
+        />
+
+    <Button
+        android:id="@+id/showDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:text="show details" />
+
+
+</LinearLayout>
