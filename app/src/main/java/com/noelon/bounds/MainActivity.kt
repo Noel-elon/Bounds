@@ -54,9 +54,11 @@ class MainActivity : AppCompatActivity() {
 
             val scrollX = relativeLeft * parentLayoutWidth
             val scrollY = relativeTop * parentLayoutHeight
-
-            parentLayout.scrollX = scrollX.toInt()
-            parentLayout.scrollY = scrollY.toInt()
+            smallImageView.scrollX = scrollX.toInt()
+            smallImageView.scrollY = scrollY.toInt()
+//
+//            parentLayout.scrollX = scrollX.toInt()
+//            parentLayout.scrollY = scrollY.toInt()
 
 
             // customview2.width = relativeWidth * parentLayout.width
