@@ -7,13 +7,24 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <com.noelon.bounds.CustomView
+        <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/ZoomviewContainer"
             android:layout_width="300dp"
             android:layout_height="200dp"
             android:layout_margin="8dp"
             android:src="@drawable/landscape" />
+
+        <ImageView
+            android:id="@+id/zoom_pin_view"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/pushpin_green"/>
+
+    </FrameLayout>
 
     <Button
         android:id="@+id/showDetails"
@@ -21,7 +32,7 @@
         android:layout_height="wrap_content"
         android:text="show details" />
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/parentLayout"
         android:layout_width="150dp"
         android:layout_height="100dp"
@@ -32,7 +43,14 @@
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:src="@drawable/landscape" />
-    </LinearLayout>
+
+        <ImageView
+            android:id="@+id/pin_image_view"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/pushpin_green" />
+
+    </FrameLayout>
 
 
 </LinearLayout>

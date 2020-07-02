@@ -11,8 +11,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
-    var pinX : Float? =null
-    var pinY : Float? =null
+    var pinX: Float? = null
+    var pinY: Float? = null
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,11 +50,15 @@ class MainActivity : AppCompatActivity() {
             smallImageWidth = (relativeWidth * parentLayoutWidth).toInt()
             smallImageHeight = (relativeHeight * parentLayoutHeight).toInt()
 
-            val smallViewPinX = pinX?.div(relativeWidth)
-            val smallViewPinY = pinY?.div(relativeHeight)
+            val pinRelativeX = pinX?.div(originalContainerWidth)
+            val pinRelativeY = pinY?.div(originalContainerHeight)
+
+            val smallViewPinX = pinRelativeX?.times(parentLayoutWidth)
+            val smallViewPinY = pinRelativeY?.times(parentLayoutHeight)
+
+
 
             Toast.makeText(this, "$smallViewPinX and $smallViewPinY", Toast.LENGTH_SHORT).show()
-
 
 
 //            smallImageView.minimumWidth = smallImageWidth
@@ -68,6 +73,13 @@ class MainActivity : AppCompatActivity() {
             val scrollY = relativeTop * parentLayoutHeight
             smallImageView.scrollX = -scrollX.toInt()
             smallImageView.scrollY = -scrollY.toInt()
+
+            if (smallViewPinX != null && smallViewPinY != null) {
+
+                pin_image_view.x = smallViewPinX
+                pin_image_view.y = smallViewPinY
+            }
+
 //
 //            parentLayout.scrollX = scrollX.toInt()
 //            parentLayout.scrollY = scrollY.toInt()
@@ -84,11 +96,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         originalContainer.setOnViewTapListener { view, x, y ->
-            originalContainer.setPin(PointF(x, y))
+           // originalContainer.setPin(PointF(x, y))
+            zoom_pin_view.x = x
+            zoom_pin_view.y = y
             Toast.makeText(this, "$x and $y", Toast.LENGTH_SHORT).show()
             pinX = x
             pinY = y
-
 
 
         }
