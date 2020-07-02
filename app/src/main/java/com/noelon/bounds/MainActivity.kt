@@ -1,13 +1,19 @@
 package com.noelon.bounds
 
 
+import android.annotation.SuppressLint
+import android.graphics.PointF
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
+    var pinX : Float? =null
+    var pinY : Float? =null
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -15,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         val originalContainer = ZoomviewContainer
         val smallImageView = smallImageContainer
         val parentLayout = parentLayout
+
+
+
 
 
 
@@ -39,6 +48,12 @@ class MainActivity : AppCompatActivity() {
 
             smallImageWidth = (relativeWidth * parentLayoutWidth).toInt()
             smallImageHeight = (relativeHeight * parentLayoutHeight).toInt()
+
+            val smallViewPinX = pinX?.div(relativeWidth)
+            val smallViewPinY = pinY?.div(relativeHeight)
+
+            Toast.makeText(this, "$smallViewPinX and $smallViewPinY", Toast.LENGTH_SHORT).show()
+
 
 
 //            smallImageView.minimumWidth = smallImageWidth
@@ -67,5 +82,18 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+
+        originalContainer.setOnViewTapListener { view, x, y ->
+            originalContainer.setPin(PointF(x, y))
+            Toast.makeText(this, "$x and $y", Toast.LENGTH_SHORT).show()
+            pinX = x
+            pinY = y
+
+
+
+        }
+
     }
+
+
 }
